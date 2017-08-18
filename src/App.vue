@@ -1,23 +1,46 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view></router-view>
+      <my-header></my-header>
+      <transition name="tablist">
+          <show-tab v-show="show" @notablist="notablist"></show-tab>
+      </transition>
+      <tab @showtablist="showtablist"></tab>
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
   </div>
 </template>
 
 <script>
+
+import MyHeader from 'components/my-header/my-header'
+import Tab from 'components/tab/tab'
+import ShowTab from 'components/showtab/showtab'
 export default {
-  name: 'app'
+    data(){
+      return {
+        show:false
+      }
+    },
+    methods:{
+      showtablist(){
+       this.show = !this.show
+      },
+      notablist(){
+       this.show = !this.show
+      }
+    },
+  	components:{
+  		MyHeader,
+      Tab,
+      ShowTab
+  	}
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style scoped lang="stylus" rel="stylesheet/stylus">
+  .tablist-enter-active,.tablist-leave-active
+    transition:all 0.3s
+  .tablist-enter,.tablist-leave-to
+    transform:translate3d(0,-100%,0)
 </style>

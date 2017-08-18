@@ -6,6 +6,12 @@ import router from './router'
 
 Vue.config.productionTip = false
 
+import 'common/stylus/index.styl'
+
+import 'common/js/rem.js'
+import 'common/font/iconfont.js'
+
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
