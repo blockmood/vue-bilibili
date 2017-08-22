@@ -3,9 +3,10 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import fastclick from 'fastclick'
 import VueLazyload from 'vue-lazyload'
 Vue.config.productionTip = false
-
+fastclick.attach(document.body)
 import 'common/stylus/index.styl'
 
 import 'common/js/rem.js'

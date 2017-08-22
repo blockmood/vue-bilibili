@@ -10,7 +10,7 @@
 </template>
 <script>
     import BScroll from 'better-scroll'
-    import {addClass} from 'common/js/dom'
+    import {addClass} from 'common/js/dom.js'
     export default{
       data(){
         return {
@@ -117,6 +117,7 @@
             background:rgba(0,0,0,.5)
             padding:1px 10px
             border-radius:5px
+            z-index:3;
             .dot
               display: inline-block
               margin: 0 4px

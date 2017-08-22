@@ -3,7 +3,7 @@
         <div class="tab-left">
             <div class="left-scroll">
                <router-link class="a" to="/recommend"><p>首页</p></router-link>
-               <router-link class="a" to="/back"><p>动画</p></router-link>
+               <router-link class="a" to="/channel"><p>动画</p></router-link>
                <router-link class="a" to="/back"><p>番剧</p></router-link>
                <router-link class="a" to="/back"><p>国创</p></router-link>
                <router-link class="a" to="/back"><p>音乐</p></router-link>
