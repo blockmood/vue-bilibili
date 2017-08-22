@@ -39,6 +39,8 @@ export default {
 </script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
+  #app
+    background:#f4f4f4
   .tablist-enter-active,.tablist-leave-active
     transition:all 0.3s
   .tablist-enter,.tablist-leave-to

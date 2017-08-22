@@ -1,7 +1,7 @@
 <template>
     <div class="showtab">
         <div class="tab-list">
-            <router-link class="a" to="/home"><p>首页</p></router-link>
+            <router-link class="a" to="/recommend"><p>首页</p></router-link>
             <router-link class="a" to="/back"><p>动画</p></router-link>
             <router-link class="a" to="/back"><p>番剧</p></router-link>
             <router-link class="a" to="/back"><p>国创</p></router-link>
@@ -76,6 +76,7 @@
                     color: #fb7299;
                     border-bottom: .08533rem solid #fb7299;
         .tab-btn
+            padding:11px 0;
             img
                 display:block;
                 margin:0 auto

@@ -14,9 +14,11 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "better-scroll": "^1.1.1",
     "jsonp": "^0.2.1",
     "vue": "^2.3.3",
+    "vue-lazyload": "^1.0.6",
     "vue-router": "^2.6.0"
   },
   "devDependencies": {
