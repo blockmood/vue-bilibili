@@ -1,13 +1,49 @@
 <template>
     <div class="navigation">
         <div class="nav-container">
-             <router-link class="tabg" to="/mad"><p>MAD·AMV</p></router-link>
-             <router-link class="tabg" to="/recommend"><p>MMD·3D</p></router-link>
-             <router-link class="tabg" to="/recommend"><p>短片·手书·配音</p></router-link>
-             <router-link class="tabg" to="/recommend"><p>综合</p></router-link>
+             <div class="tabg" v-for = "(item,index) in nav" @click="getList(item)">
+                <p :class="{active:item.tid === tid}">{{item.name}}</p>
+             </div>
         </div>
     </div>
 </template>
+<script>
+    export default{
+        props:{
+            tid:{
+                type:Number,
+                default:24
+            }
+        },
+        data(){
+            return {
+                nav:[
+                    {
+                        name:'MAD·AMV',
+                        tid:24
+                    },
+                    {
+                        name:'MMD·3D',
+                        tid:25
+                    },
+                    {
+                        name:'短片·手书·配音',
+                        tid:47
+                    },
+                    {
+                        name:'综合',
+                        tid:27
+                    }
+                ]
+            }
+        },
+        methods:{
+            getList(tid){
+                this.$emit('getList',tid)
+            }
+        }
+    }
+</script>
 <style lang="stylus" rel="stylesheet/stylus">
     .navigation
         top: 3.69733rem;
@@ -32,6 +68,6 @@
                     line-height: 1.87733rem;
                     text-align: center;
                     color: #757575;
-            .router-link-active p
-                color:#fb7299
+                p.active
+                    color:#fb7299
 </style>
