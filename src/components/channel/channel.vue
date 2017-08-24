@@ -40,8 +40,14 @@
                 listenScroll:true,
                 show:true,
                 scrollY:0,
-                tid:24
+                tid:0
             }
+        },
+        created(){
+            if(!this.TopTlist.length){
+                return
+            }
+            this.tid = this.TopTlist[0].tid
         },
         mounted(){
             this._getAniList()
@@ -87,7 +93,7 @@
         },
         computed:{
             ...mapGetters([
-                'TopTlist'
+                'TopTlist',
             ])
         },
         components:{
@@ -98,10 +104,10 @@
         },
         watch:{
             TopTlist(newList){
-                if(!this.TopTlist.length){
+                if(!newList.length){
                     return
                 }
-                this.tid = this.TopTlist[0].tid
+                this.tid = newList[0].tid
                 this._getAniList()
             },
             scrollY(newY,oldY){

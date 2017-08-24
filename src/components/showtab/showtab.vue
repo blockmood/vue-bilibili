@@ -16,7 +16,7 @@
 <script>
     
     import {TopList} from 'common/js/config'
-    import {mapMutations} from 'vuex'
+    import {mapMutations,mapGetters} from 'vuex'
     export default{
         data(){
             return {
@@ -37,6 +37,16 @@
                 setList:'SET_LIST',
                 setClsId:'SET_CLSID'
             })
+        },
+        computed:{
+            ...mapGetters([
+                'clsId'
+            ])
+        },
+        watch:{
+            clsId(newId){
+                this.ClsId = newId
+            }
         }
     }
 </script>

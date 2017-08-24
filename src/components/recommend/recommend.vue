@@ -76,7 +76,6 @@
                 this.show = false
             },
             scroll(pos){
-               //重新计算
                 if(this.flag){
                     this.$refs.scroll.refresh()
                     this.flag = false

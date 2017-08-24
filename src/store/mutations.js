@@ -6,6 +6,9 @@ const mutations = {
     },
     [types.SET_CLSID](state,id){
         state.clsId = id
+    },
+    [types.SET_TID](state,id){
+        state.lstid = id
     }
 }
 

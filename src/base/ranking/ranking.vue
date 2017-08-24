@@ -77,20 +77,20 @@
                return getPlay(state)
             },
             more(index){
-               //当前点击的index
                index = index+1 
                for(let i=0;i<this.topList.length;i++){
                     if(index === i){
-                        //跳转
                         this.$router.push('/channel')
                         this.setClsId(this.topList[i].id)
+                        this.setTid(this.topList[i].topTList[0].tid)
                         this.setList(this.topList[i].topTList)
                     }
                }
             },
             ...mapMutations({
                 setList:'SET_LIST',
-                setClsId:'SET_CLSID'
+                setClsId:'SET_CLSID',
+                setTid:'SET_TID'
             })
         }
     }

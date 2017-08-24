@@ -13,7 +13,7 @@
         props:{
             tid:{
                 type:Number,
-                default:0
+                default:33
             }
         },
         data(){
