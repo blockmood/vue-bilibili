@@ -7,6 +7,7 @@ import fastclick from 'fastclick'
 import VueLazyload from 'vue-lazyload'
 Vue.config.productionTip = false
 fastclick.attach(document.body)
+import store from './store'
 import 'common/stylus/index.styl'
 
 import 'common/js/rem.js'
@@ -22,6 +23,7 @@ Vue.use(VueLazyload, {
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
 })

@@ -26,7 +26,7 @@
     import {getAniList} from 'api/animation'
     import Scroll  from 'base/scroll/scroll'
     import Loading from 'base/loading/loading'
-
+    import {mapGetters} from 'vuex'
     const NEW_Y = -300
 
     export default{
@@ -78,12 +78,17 @@
             },
             getList(item){
                 if(!item.tid){
-                    this.tid = 24
+                    this.tid = this.TopTlist[0].tid
                 }
                 this.tid = item.tid
                 this._getAniList()
                 this.$refs.scroll.scrollTo(0,0,20)
             }
+        },
+        computed:{
+            ...mapGetters([
+                'TopTlist'
+            ])
         },
         components:{
             navigation,
@@ -92,6 +97,13 @@
             Loading
         },
         watch:{
+            TopTlist(newList){
+                if(!this.TopTlist.length){
+                    return
+                }
+                this.tid = this.TopTlist[0].tid
+                this._getAniList()
+            },
             scrollY(newY,oldY){
                if(newY > 0 && oldY >0){
                     return

@@ -1,23 +1,21 @@
 <template>
-    <div class="hot">
-        <div class="hot-box" v-for="(item,index) in rankList">
+    <div class="billbord">
+        <div class="hot-box" >
             <div class="hot-list">
                 <div class="hot-tit">
-                    <div class="icon" aria-hidden="true">
-                        <i class="icon hot-icon iconfont" :class="icon[index]"></i>
-                    </div>
-                    <p class="hot-recemmend" v-for="(n,i) in nav" v-if="i === index">{{n}}</p>
+                    <div aria-hidden="true" class="icon"><i class="icon hot-icon iconfont icon-shexiangji"></i></div>
+                    <p class="hot-recemmend">排行榜</p>
                 </div>
-                <div class="hot-rank" @click="more(index)">
+                <a href="" class="hot-rank">
                     <div class="paihang">
-                        <p>查看更多</p>
+                        <p>排行榜</p>
                     </div>
                     <div class="more">
                         <img src="../../common/image/jt.png" alt="">
                     </div>
-                </div>
+                </a>
                 <div class="hot-content">
-                    <a :href="item1.aid" class="hot-item" v-for="(item1,index) in item" v-if="index < dots.length">
+                    <a :href="item1.aid" class="hot-item" v-for="(item1,index) in billBorad" v-if="index < dots.length">
                         <div class="hot-src">
                             <img v-lazy="item1.pic">
                             <div class="hot-btn">
@@ -50,22 +48,18 @@
 </template>
 <script>
 
-    import {NavList,iconList,TopList} from 'common/js/config'
-    import {getPlay,getA} from 'common/js/dom.js'
-     import {mapMutations} from 'vuex'
+    import {getPlay} from 'common/js/dom.js'
+
     export default{
-        data(){
-            return {
-                dots:[],
-                nav:NavList,
-                icon:iconList,
-                topList:TopList
-            }
-        },
         props:{
-            rankList:{
+            billBorad:{
                 type:Array,
                 default:[]
+            }
+        },
+        data(){
+            return {
+                dots:[]
             }
         },
         mounted(){
@@ -74,29 +68,13 @@
         },
         methods:{
             _getPlay(state){
-               return getPlay(state)
-            },
-            more(index){
-               //当前点击的index
-               index = index+1 
-               for(let i=0;i<this.topList.length;i++){
-                    if(index === i){
-                        //跳转
-                        this.$router.push('/channel')
-                        this.setClsId(this.topList[i].id)
-                        this.setList(this.topList[i].topTList)
-                    }
-               }
-            },
-            ...mapMutations({
-                setList:'SET_LIST',
-                setClsId:'SET_CLSID'
-            })
+                return getPlay(state)
+            }
         }
     }
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
-.hot
+.billbord
     .hot-box
         position: relative;
         width: 100%;
@@ -117,7 +95,7 @@
                 width: 1.19467rem;
                 height: .95573rem;
                 font-size:27px
-                color:rgb(241, 71, 103)
+                color:rgb(66, 201, 232)
             .hot-recemmend
                 position: relative;
                 float: left;
@@ -131,12 +109,6 @@
             position: absolute;
             right: .512rem;
             top: .85333rem;
-            z-index:5
-            &::before
-                content: "";
-                display: block;
-                height: 0;
-                clear: both;
             .paihang
                 position: relative;
                 float: left;
@@ -144,7 +116,7 @@
                 margin-top: .14933rem;
                 p
                     font-size: .59733rem;
-                    color:#999
+                    color:#ffa726
                     text-align: center;
                     line-height: .59733rem;
             .more

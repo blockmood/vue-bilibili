@@ -1,8 +1,8 @@
 <template>
 	<div class="header">
-		<a href="" class="logo">
+		<div class="logo">
 			<img src="./logo.png">
-		</a>
+		</div>
 		<a href="" class="search">
 			 <svg class="search-icon" aria-hidden="true">
                 <use xlink:href="#icon-sousuo"></use>

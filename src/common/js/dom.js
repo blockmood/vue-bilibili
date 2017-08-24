@@ -30,9 +30,11 @@ export function getPlay(state){
                 return first + HAN
             }
         }
-        
     }else{
         return state
     }
 }
 
+export function getA(){
+    return '111'
+}

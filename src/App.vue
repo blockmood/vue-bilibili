@@ -2,9 +2,9 @@
   <div id="app">
       <my-header></my-header>
       <transition name="tablist">
-          <show-tab v-show="show" @notablist="notablist"></show-tab>
+          <show-tab v-show="show" @notabId="notabId" @notablist="notablist"></show-tab>
       </transition>
-      <tab @showtablist="showtablist"></tab>
+      <tab @showtablist="showtablist" :id="id"></tab>
       <keep-alive>
         <router-view></router-view>
       </keep-alive>
@@ -19,7 +19,8 @@ import ShowTab from 'components/showtab/showtab'
 export default {
     data(){
       return {
-        show:false
+        show:false,
+        id:0
       }
     },
     methods:{
@@ -28,6 +29,10 @@ export default {
       },
       notablist(){
        this.show = !this.show
+      },
+      notabId(item){
+        this.id = item.id
+        this.show = !this.show
       }
     },
   	components:{

@@ -23,3 +23,14 @@ export function getRanking(){
     return jsonp(url,data,options)
     
 }
+
+export function getBillBoard(){
+    let url = 'https://api.bilibili.com/archive_rank/getarchiverankbypartion'
+    
+    const data = Object.assign({},commonParams,{
+        tid:168,
+        pn:1
+	})
+
+    return jsonp(url,data,options)
+}

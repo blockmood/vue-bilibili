@@ -1,45 +1,50 @@
 <template>
     <div class="navigation">
         <div class="nav-container">
-             <div class="tabg" v-for = "(item,index) in nav" @click="getList(item)">
+             <div class="tabg" v-for = "(item,index) in TopTlist" @click="getList(item)">
                 <p :class="{active:item.tid === tid}">{{item.name}}</p>
              </div>
         </div>
     </div>
 </template>
 <script>
+    import {mapGetters} from 'vuex'
     export default{
         props:{
             tid:{
                 type:Number,
-                default:24
+                default:0
             }
         },
         data(){
             return {
-                nav:[
-                    {
-                        name:'MAD·AMV',
-                        tid:24
-                    },
-                    {
-                        name:'MMD·3D',
-                        tid:25
-                    },
-                    {
-                        name:'短片·手书·配音',
-                        tid:47
-                    },
-                    {
-                        name:'综合',
-                        tid:27
-                    }
-                ]
+                nav:[]
             }
+        },
+        created(){
+            this.getNavList()
         },
         methods:{
             getList(tid){
                 this.$emit('getList',tid)
+            },
+            getNavList(){
+                if(!this.TopTlist.length){
+                    this.$router.push('/recommend')
+                    return 
+                }
+            }
+        },
+        computed:{
+            ...mapGetters([
+                'TopTlist'
+            ])
+        },
+        watch:{
+            TopTlist(newList){
+                if(!newList.length){
+                    return 
+                }
             }
         }
     }

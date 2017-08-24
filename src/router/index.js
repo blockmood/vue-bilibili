@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Recommend from 'components/recommend/recommend'
-import Channel from 'components/animation/channel/channel'
+import Channel from 'components/channel/channel'
 
 Vue.use(Router)
 

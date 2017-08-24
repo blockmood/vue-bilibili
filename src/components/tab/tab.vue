@@ -2,22 +2,12 @@
     <div class="tab">
         <div class="tab-left">
             <div class="left-scroll">
-               <router-link class="a" to="/recommend"><p>首页</p></router-link>
-               <router-link class="a" to="/channel"><p>动画</p></router-link>
-               <router-link class="a" to="/back"><p>番剧</p></router-link>
-               <router-link class="a" to="/back"><p>国创</p></router-link>
-               <router-link class="a" to="/back"><p>音乐</p></router-link>
-               <router-link class="a" to="/back"><p>舞蹈</p></router-link>
-               <router-link class="a" to="/back"><p>科技</p></router-link>
-               <router-link class="a" to="/back"><p>游戏</p></router-link>
-               <router-link class="a" to="/back"><p>娱乐</p></router-link>
-               <router-link class="a" to="/back"><p>鬼畜</p></router-link>
-               <router-link class="a" to="/back"><p>电影</p></router-link>
-               <router-link class="a" to="/back"><p>电视剧</p></router-link>
-               <router-link class="a" to="/back"><p>生活</p></router-link>
-               <router-link class="a" to="/back"><p>时尚</p></router-link>
-               <router-link class="a" to="/back"><p>广告</p></router-link>
-               <router-link class="a" to="/back"><p>直播</p></router-link>
+                <router-link class="a"
+                :class="{active: item.id == clsId}" 
+                :to="{ path:item.url }" 
+                :key="item.id" 
+                v-for="(item,index) in list"
+                ><p @click="getClass(item)">{{item.title}}</p></router-link>
             </div>
         </div>
         <div class="tab-right" @click="showtab">
@@ -26,16 +16,41 @@
     </div>
 </template>
 <script>
-
+    import {TopList} from 'common/js/config'
+    import {mapMutations,mapGetters} from 'vuex'
     export default{
+        props:{
+            id:{
+                type:Number,
+                id:0
+            }
+        },
         data(){
             return {
-               
+                list:TopList,
             }
         },
         methods:{
             showtab(){
                 this.$emit('showtablist')
+            },
+            getClass(item){
+                this.setClsId(item.id)
+                this.setList(item.topTList)
+            },
+            ...mapMutations({
+                setList:'SET_LIST',
+                setClsId:'SET_CLSID'
+            })
+        },
+        computed:{
+            ...mapGetters([
+                'clsId'
+            ])
+        },
+        watch:{
+            id(newId){
+                this.ClsId = newId
             }
         }
     }
@@ -67,13 +82,13 @@
                     -webkit-transform: translateZ(0);
                     -webkit-perspective: 1000;
                     background-color: #fff;
-                    margin-right: 1.49333rem;
+                    margin-right: 1.29333rem;
                     p
                         width: 1.36533rem;
                         font-size: .59733rem;
                         line-height: 1.28rem;
                         text-align: center;
-                .router-link-active p
+                .active p
                     color: #fb7299;
                     border-bottom: .08533rem solid #fb7299;
         .tab-right

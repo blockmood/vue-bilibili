@@ -1,22 +1,12 @@
 <template>
     <div class="showtab">
         <div class="tab-list">
-            <router-link class="a" to="/recommend"><p>首页</p></router-link>
-            <router-link class="a" to="/channel"><p>动画</p></router-link>
-            <router-link class="a" to="/back"><p>番剧</p></router-link>
-            <router-link class="a" to="/back"><p>国创</p></router-link>
-            <router-link class="a" to="/back"><p>音乐</p></router-link>
-            <router-link class="a" to="/back"><p>舞蹈</p></router-link>
-            <router-link class="a" to="/back"><p>科技</p></router-link>
-            <router-link class="a" to="/back"><p>游戏</p></router-link>
-            <router-link class="a" to="/back"><p>娱乐</p></router-link>
-            <router-link class="a" to="/back"><p>鬼畜</p></router-link>
-            <router-link class="a" to="/back"><p>电影</p></router-link>
-            <router-link class="a dsj" to="/back"><p>电视剧</p></router-link>
-            <router-link class="a" to="/back"><p>生活</p></router-link>
-            <router-link class="a" to="/back"><p>时尚</p></router-link>
-            <router-link class="a" to="/back"><p>广告</p></router-link>
-
+             <router-link class="a"
+                :class="{active:item.id == ClsId}" 
+                :to="{ path:item.url }" 
+                :key="item.id" 
+                v-for="(item,index) in list"
+                ><p @click="getClass(item)">{{item.title}}</p></router-link>
         </div>
         <div class="tab-btn" @click="notablist">
             <img src="./xlk.png" alt="">
@@ -24,16 +14,29 @@
     </div>
 </template>
 <script>
+    
+    import {TopList} from 'common/js/config'
+    import {mapMutations} from 'vuex'
     export default{
         data(){
             return {
-            
+                 list:TopList,
+                 ClsId:0
             }
         },
         methods:{
             notablist(){
                 this.$emit('notablist')
-            }
+            },
+            getClass(item){
+                this.$emit('notabId',item)
+                this.setClsId(item.id)
+                this.setList(item.topTList)
+            },
+            ...mapMutations({
+                setList:'SET_LIST',
+                setClsId:'SET_CLSID'
+            })
         }
     }
 </script>
@@ -72,7 +75,7 @@
                 margin: 0 .29867rem;
                 p
                     width:1.96267rem
-            .router-link-active p
+            .active p
                     color: #fb7299;
                     border-bottom: .08533rem solid #fb7299;
         .tab-btn

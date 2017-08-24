@@ -11,6 +11,7 @@
                         </div>
                     </slider>
                 </div>
+                <BillBoard :billBorad="billBorad"></BillBoard>
                 <RankIng :rankList="rankList" v-if="rankList.length"></RankIng>
                 <my-footer></my-footer>
             </div>
@@ -24,8 +25,9 @@
     import Scroll from 'base/scroll/scroll'
     import MyFooter from 'components/my-footer/my-footer'
     import toTop from 'base/toTop/toTop'
+    import BillBoard from 'base/billboard/billboard'
     
-    import {getSliderList,getRanking} from 'api/recommend'
+    import {getSliderList,getRanking,getBillBoard} from 'api/recommend'
 
     const MAX_SCROLL = -300
 
@@ -33,6 +35,7 @@
         data(){
             return {
                 sliderDist:[],
+                billBorad:[],
                 rankList:[],
                 show:false,
                 listenScroll:true,
@@ -45,6 +48,7 @@
             setTimeout(()=>{
                 this._getSliderList()
                 this._rankIng()
+                this._getBillBoard()
             },20)
         },
         methods:{
@@ -60,6 +64,13 @@
                    }
                 })
             },
+            _getBillBoard(){
+                getBillBoard().then((res)=>{
+                    if(res.code === 0){
+                        this.billBorad = res.data.archives
+                    }
+                })
+            },
             scrollTop(){
                 this.$refs.scroll.scrollTo(0,0,2000)
                 this.show = false
@@ -69,6 +80,9 @@
                 if(this.flag){
                     this.$refs.scroll.refresh()
                     this.flag = false
+                }
+                if(pos.y >= 0){
+                     this.show = false
                 }
                this.scrollY = pos.y
                if(this.scrollY < MAX_SCROLL){
@@ -83,7 +97,8 @@
             RankIng,
             MyFooter,
             toTop,
-            Scroll
+            Scroll,
+            BillBoard
         }
     }
 </script>
