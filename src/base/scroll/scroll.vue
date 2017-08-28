@@ -5,6 +5,9 @@
 </template>
 <script>
     import BScroll from 'better-scroll'
+
+    const TopHeight = -300
+
     export default{
         props:{
             probeType:{
@@ -28,6 +31,10 @@
                 default:false
             },
             pullup:{
+                type:Boolean,
+                default:false
+            },
+            topShow:{
                 type:Boolean,
                 default:false
             }
@@ -55,9 +62,17 @@
                 }
 
                 if(this.pullup){
-                    this.scroll.on('scrollEnd',()=>{
+                    this.scroll.on('scrollEnd',(pos)=>{
                         if(this.scroll.y <= this.scroll.maxScrollY + 50){
                             this.$emit('scrollEnd')
+                        }
+                    })
+                }
+
+                if(this.topShow){
+                    this.scroll.on('scrollEnd',(pos)=>{
+                        if(this.scroll.y  >= TopHeight){
+                            this.$emit('scrollEnd',pos)
                         }
                     })
                 }

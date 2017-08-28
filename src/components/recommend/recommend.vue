@@ -1,6 +1,14 @@
 <template>
     <div class="recommend">
-        <Scroll @scroll="scroll" ref="scroll" class="recommend-content" :data="rankList" :probeType="probeType" :listenScroll="listenScroll">
+        <Scroll @scroll="scroll" 
+            :topShow="topShow" 
+            ref="scroll" 
+            class="recommend-content" 
+            :data="rankList" 
+            :probeType="probeType" 
+            :listenScroll="listenScroll"
+            @scrollEnd="scrollEnd"
+        >
             <div>
                 <div class="slider-wrapper" v-if="sliderDist.length">
                     <slider>
@@ -41,7 +49,8 @@
                 listenScroll:true,
                 scrollY:0,
                 probeType:2,
-                flag:true
+                flag:true,
+                topShow:true
             }
         },
         created(){
@@ -72,8 +81,13 @@
                 })
             },
             scrollTop(){
-                this.$refs.scroll.scrollTo(0,0,2000)
+                this.$refs.scroll.scrollTo(0,0,1000)
                 this.show = false
+            },
+            scrollEnd(pos){
+               if(pos.y >= MAX_SCROLL){
+                this.show = false
+               }
             },
             scroll(pos){
                 if(this.flag){
