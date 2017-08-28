@@ -34,7 +34,3 @@ export function getPlay(state){
         return state
     }
 }
-
-export function getA(){
-    return '111'
-}

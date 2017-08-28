@@ -6,14 +6,14 @@
                     <div aria-hidden="true" class="icon"><i class="icon hot-icon iconfont icon-shexiangji"></i></div>
                     <p class="hot-recemmend">排行榜</p>
                 </div>
-                <a href="" class="hot-rank">
-                    <div class="paihang">
+                <router-link class="hot-rank" to="focus">
+                    <div class="paihang" >
                         <p>排行榜</p>
                     </div>
                     <div class="more">
                         <img src="../../common/image/jt.png" alt="">
                     </div>
-                </a>
+                </router-link>
                 <div class="hot-content">
                     <a :href="item1.aid" class="hot-item" v-for="(item1,index) in billBorad" v-if="index < dots.length">
                         <div class="hot-src">
@@ -109,6 +109,7 @@
             position: absolute;
             right: .512rem;
             top: .85333rem;
+            z-index:5;
             .paihang
                 position: relative;
                 float: left;

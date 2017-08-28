@@ -16,7 +16,6 @@
     height:20px
     position:relative;
     z-index:999
-    bottom:10px
     img
       vertical-align:bottom
     .desc

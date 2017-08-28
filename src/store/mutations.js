@@ -9,6 +9,9 @@ const mutations = {
     },
     [types.SET_TID](state,id){
         state.lstid = id
+    },
+    [types.SET_FOCUS_LIST](state,data){
+        state.focusList = data
     }
 }
 

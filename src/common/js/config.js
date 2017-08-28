@@ -243,3 +243,62 @@ export const TopList = [
         ]
     }
 ]
+
+export const FocusNavList = [
+    {
+        title:'全站',
+        rid:0
+    },
+    {
+        title:'动画',
+        rid:1
+    },
+    {
+        title:'番剧',
+        rid:33
+    },
+    {
+        title:'国创',
+        rid:167
+    },
+    {
+        title:'电影',
+        rid:23
+    },
+    {
+        title:'电视剧',
+        rid:11
+    },
+    {
+        title:'音乐',
+        rid:3
+    },
+    {
+        title:'舞蹈',
+        rid:129
+    },
+    {
+        title:'游戏',
+        rid:4
+    },
+    {
+        title:'科技',
+        rid:36
+    },
+    {
+        title:'生活',
+        rid:160
+    },
+    {
+        title:'鬼畜',
+        rid:119
+    },
+    {
+        title:'时尚',
+        rid:155
+    },
+    {
+        title:'娱乐',
+        rid:5
+    }
+]
