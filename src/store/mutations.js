@@ -12,6 +12,12 @@ const mutations = {
     },
     [types.SET_FOCUS_LIST](state,data){
         state.focusList = data
+    },
+    [types.SET_HISTORY](state,item){
+        state.history.push(item)
+    },
+    [types.REMOVE_HISTORY](state){
+        state.history = []
     }
 }
 

@@ -3,11 +3,11 @@
 		<div class="logo">
 			<img src="./logo.png">
 		</div>
-		<a href="" class="search">
+		<router-link class="search" to="search">
 			 <svg class="search-icon" aria-hidden="true">
                 <use xlink:href="#icon-sousuo"></use>
             </svg>
-		</a>
+		</router-link>
 		<a href="" class="history"></a>
 		<a href="javascript:void(0)" class="donlown"><p>下载客户端</p></a>
 	</div>
