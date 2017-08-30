@@ -1,7 +1,9 @@
+import {getHistory} from 'common/js/cache'
+
 const state = {
     TopTlist:[],
     focusList:[],
-    history:[],
+    history:getHistory(),
     clsId:0,
     lstid:0
 }

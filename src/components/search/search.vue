@@ -18,7 +18,6 @@
     import Suggest from 'components/suggest/suggest'
     import History from 'components/history/history'
     import {AllSearch} from 'api/AllSearch'
-    import {mapMutations} from 'vuex'
     export default{
         data(){
             return {
@@ -32,11 +31,7 @@
             },
             onClick(item){
                 this.query = item.keyword
-                this.setHistory(item.keyword)
-            },
-            ...mapMutations({
-                setHistory:'SET_HISTORY'
-            })
+            }
         },
         components:{
             SearchBox,

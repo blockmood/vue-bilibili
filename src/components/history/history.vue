@@ -3,38 +3,35 @@
         <div class="history_title">
             <p>历史搜索</p>
         </div>
-        <div class="history_item" @click="onClick" v-for="item in HisList">
+        <div class="history_item" @click="onClick" v-for="item in history">
             <div class="index_icon">
                 <img src="./history.png" alt="">
             </div>
             <p>{{item}}</p>
         </div>
-        <div class="index_removehistory" @click="removehistory">
+        <div class="index_removehistory" @click="clearHistory">
             <p>清除历史记录</p>
         </div>
     </div>
 </template>
 <script>
-    import {mapGetters,mapMutations} from 'vuex'
+    import {mapGetters,mapActions} from 'vuex'
     export default{
        computed:{
-           ...mapGetters([
-               'history'
-           ]),
-           HisList:function(){
-               return Array.from(new Set(this.history)).reverse()
-           }
+          ...mapGetters([
+              'history'
+          ])
        },
        methods:{
-           onClick(){
-               alert('接口暂不支持搜索')
-           },
-           removehistory(){
-                this.removeHistory()
-           },
-           ...mapMutations({
-               removeHistory:'REMOVE_HISTORY'
-           })
+          clearHistory(){
+              
+          },
+          onClick(){
+            alert('接口暂时不支持搜索')
+          },
+          ...mapActions([
+              'clearHistory'
+          ])
        }
     }
 </script>

@@ -1,6 +1,6 @@
 <template>
     <div class="suggest">
-        <div class="suggest_item" @click="onClick(item)" v-for="(item,index) in searchList">
+        <div class="suggest_item" @click="saveHistory(item)" v-for="(item,index) in searchList">
             <div class="suggest_conent">
                 <p v-html="getColor(item.value)"> 
                 </p>
@@ -11,6 +11,7 @@
 <script>
 
     import {SearchList} from 'api/suggest'
+    import {mapActions} from 'vuex'
 
     export default{
         props:{
@@ -35,10 +36,13 @@
             getColor(str){
                return str.replace(new RegExp(this.query),`<em class="suggest_high_light">${this.query}<em>`)
             },
-            onClick(item){
-                
-                alert('接口暂不支持搜索')
-            }
+            saveHistory(item){
+                this.setHistory(item.value)
+                alert('接口暂时不支持搜索')
+            },
+            ...mapActions([
+                'setHistory'
+            ])
         },
         watch:{
             query(){
