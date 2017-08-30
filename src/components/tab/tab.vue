@@ -35,7 +35,6 @@
                 this.$emit('showtablist')
             },
             getClass(item){
-                console.log(item.id)
                 this.setClsId(item.id)
                 this.setList(item.topTList)
             },

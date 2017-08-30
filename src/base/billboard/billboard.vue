@@ -6,14 +6,14 @@
                     <div aria-hidden="true" class="icon"><i class="icon hot-icon iconfont icon-shexiangji"></i></div>
                     <p class="hot-recemmend">排行榜</p>
                 </div>
-                <router-link class="hot-rank" to="focus">
+                <div class="hot-rank" @click="rankshow">
                     <div class="paihang" >
                         <p>排行榜</p>
                     </div>
                     <div class="more">
                         <img src="../../common/image/jt.png" alt="">
                     </div>
-                </router-link>
+                </div>
                 <div class="hot-content">
                     <a :href="item1.aid" class="hot-item" v-for="(item1,index) in billBorad" v-if="index < dots.length">
                         <div class="hot-src">
@@ -49,7 +49,8 @@
 <script>
 
     import {getPlay} from 'common/js/dom.js'
-
+    import {mapGetters,mapMutations} from 'vuex'
+    import {getFocus} from 'api/focus'
     export default{
         props:{
             billBorad:{
@@ -69,7 +70,29 @@
         methods:{
             _getPlay(state){
                 return getPlay(state)
-            }
+            },
+            rankshow(){
+                this.setRankShow(true)
+                setTimeout(()=>{
+                    this.getList()
+                },800)
+            },
+            getList(){
+                getFocus(this.rid).then((res)=>{
+                    if(res.code === 0){
+                        this.setFocusList(res.data.list)
+                    }
+                })
+            },
+            ...mapMutations({
+                setRankShow:'SET_RANK_SHOW',
+                setFocusList:'SET_FOCUS_LIST'
+            })
+        },
+        computed:{
+            ...mapGetters([
+                'rid'
+            ])
         }
     }
 </script>

@@ -131,5 +131,8 @@
                 position: relative
                 width: 100%
                 overflow: hidden
+                img
+                    display:block;
+                    width:100%
 
 </style>

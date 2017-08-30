@@ -1,19 +1,34 @@
 <template>
 	<div class="header">
-		<div class="logo">
+		<div class="logo" @click="backHome">
 			<img src="./logo.png">
 		</div>
-		<router-link class="search" to="search">
+		<div class="search" @click="search">
 			 <svg class="search-icon" aria-hidden="true">
                 <use xlink:href="#icon-sousuo"></use>
             </svg>
-		</router-link>
+		</div>
 		<a href="" class="history"></a>
-		<a href="javascript:void(0)" class="donlown"><p>下载客户端</p></a>
+		<a href="http://d.bilibili.com/download_app.html?preUrl=http%3A%2F%2Fm.bilibili.com%2Fspace" class="donlown"><p>下载客户端</p></a>
 	</div>
 </template>
 <script>
-	
+	import {mapMutations} from 'vuex'
+	export default{
+		methods:{
+			backHome(){
+				this.$router.push('recommend')
+				this.setClsId(0)
+			},
+			search(){
+				this.setSearchShow(true)
+			},
+			...mapMutations({
+                setClsId:'SET_CLSID',
+				setSearchShow:'SET_SEARCH_SHOW'
+            })
+		}
+	}
 </script>
 <style lang="stylus" rel="stylesheet/stylus">
 @import "~common/stylus/variable"

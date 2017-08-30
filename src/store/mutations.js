@@ -18,6 +18,15 @@ const mutations = {
     },
     [types.CLEAR_HISTORY](state){
         state.history = []
+    },
+    [types.SET_RANK_SHOW](state,val){
+        state.rankshow = val
+    },
+    [types.SET_SEARCH_SHOW](state,val){
+        state.searchshow = val
+    },
+    [types.SET_RID](state,id){
+        state.rid = id
     }
 }
 

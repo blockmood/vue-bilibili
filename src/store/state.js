@@ -5,7 +5,10 @@ const state = {
     focusList:[],
     history:getHistory(),
     clsId:0,
-    lstid:0
+    lstid:0,
+    rankshow:false,
+    searchshow:false,
+    rid:0
 }
 
 export default state

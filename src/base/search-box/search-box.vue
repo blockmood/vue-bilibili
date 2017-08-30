@@ -38,7 +38,7 @@
         },
         methods:{
             back(){
-                this.$router.push('recommend')
+                this.setSearchShow(false)
             },
             enter(query){
                alert('接口暂不支持搜索')
@@ -48,7 +48,8 @@
                 this.query = ''
             },
             ...mapMutations({
-                setHistory:'SET_HISTORY'
+                setHistory:'SET_HISTORY',
+                setSearchShow:'SET_SEARCH_SHOW'
             })
         },
         watch:{

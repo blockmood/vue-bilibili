@@ -9,3 +9,9 @@ export const SET_FOCUS_LIST = 'SET_FOCUS_LIST'
 export const SET_HISTORY = 'SET_HISTORY'
 
 export const CLEAR_HISTORY = 'CLEAR_HISTORY'
+
+export const SET_RANK_SHOW = 'SET_RANK_SHOW'
+
+export const SET_SEARCH_SHOW = 'SET_SEARCH_SHOW'
+
+export const SET_RID = 'SET_RID'

@@ -26,7 +26,7 @@
                 </div>
             </div>
         </div>
-        <FocusList :rid="rid"></FocusList>
+        <FocusList></FocusList>
     </div>
 </template>
 <script>
@@ -34,40 +34,37 @@
     import FocusList from 'base/focuslist/focuslist'
     import {FocusNavList} from 'common/js/config'
     import {getFocus} from 'api/focus'
-    import {mapMutations} from 'vuex'
+    import {mapMutations,mapGetters} from 'vuex'
 
     export default{
         data(){
             return {
                 FocusNavList:FocusNavList,
-                rid:0
             }
         },
-        created(){
-            this._getFocusList()
-        },
         methods:{
-            _getFocusList(){
+            getFcousList(item){
+                this.setRid(item.rid)
                 getFocus(this.rid).then((res)=>{
                     if(res.code === 0){
                         this.setFocusList(res.data.list)
                     }
                 })
             },
-            getFcousList(item){
-                this.rid = item.rid
-                getFocus(item.rid).then((res)=>{
-                    if(res.code === 0){
-                        this.setFocusList(res.data.list)
-                    }
-                })
-            },
             back(){
-                this.$router.push({path:'recommend'})
+                this.setRankShow(false)
             },
             ...mapMutations({
-                setFocusList:'SET_FOCUS_LIST'
+                setFocusList:'SET_FOCUS_LIST',
+                setRankShow:'SET_RANK_SHOW',
+                setRid:'SET_RID'
             })
+        },
+        computed:{
+            ...mapGetters([
+                'focusList',
+                'rid'
+            ])
         },
         components:{
             FocusList,
@@ -131,10 +128,12 @@
                 background-color: #fff;
                 .index_back
                     position: absolute;
-                    display: block;
+                    display: flex;
                     left: .42667rem;
                     top: 50%;
+
                     width: 1.536rem;
+                    height:1.536rem;
                     -webkit-transform: translateY(-50%);
                     img
                         position: relative;

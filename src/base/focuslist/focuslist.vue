@@ -33,7 +33,7 @@
                     </div>
                 </a>
                 <div class="logging">
-                    <loading v-show="!focusList.length"></loading>
+                    <loading></loading>
                 </div>
             </div>
         </Scroll>
@@ -44,9 +44,11 @@
     import Scroll from 'base/scroll/scroll'
     import {getPlay} from 'common/js/dom'
     import loading from 'base/loading/loading'
+    
     export default{
-        mounted(){
-            this._getPlay()  
+        created(){
+            this._getPlay()
+    
         },
         methods:{
             _getPlay(item){
