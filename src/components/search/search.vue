@@ -48,7 +48,7 @@
         top:0px
         bottom:0
         background:#fff
-        z-index:10
+        z-index:20
         .index_recomme
             position: relative;
             margin-top: 1.89867rem;

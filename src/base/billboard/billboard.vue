@@ -15,7 +15,11 @@
                     </div>
                 </div>
                 <div class="hot-content">
-                    <a :href="item1.aid" class="hot-item" v-for="(item1,index) in billBorad" v-if="index < dots.length">
+                    <div 
+                    :key="item1.aid" 
+                    class="hot-item" 
+                    @click="onPlay(item1)"  
+                    v-for="(item1,index) in billBorad" v-if="index < dots.length">
                         <div class="hot-src">
                             <img v-lazy="item1.pic">
                             <div class="hot-btn">
@@ -38,7 +42,7 @@
                         <div class="hot-title">
                             <p>{{item1.title}}</p>
                         </div>
-                    </a>
+                    </div>
 
                 </div>
             </div>
@@ -48,7 +52,7 @@
 </template>
 <script>
 
-    import {getPlay} from 'common/js/dom.js'
+    import {getPlay,reload} from 'common/js/dom.js'
     import {mapGetters,mapMutations} from 'vuex'
     import {getFocus} from 'api/focus'
     export default{
@@ -84,15 +88,26 @@
                     }
                 })
             },
+            onPlay(item){
+                this.setPlayer(item)
+                this.$router.push('play')
+            },
             ...mapMutations({
                 setRankShow:'SET_RANK_SHOW',
-                setFocusList:'SET_FOCUS_LIST'
+                setFocusList:'SET_FOCUS_LIST',
+                setPlayer:'SET_PLAYER'
             })
         },
         computed:{
             ...mapGetters([
-                'rid'
+                'rid',
+                'player'
             ])
+        },
+        watch:{
+            player(){
+                this.$router.push('play')
+            }
         }
     }
 </script>

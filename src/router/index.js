@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Recommend from 'components/recommend/recommend'
 import Channel from 'components/channel/channel'
-// import Focus from 'components/focus/focus'
+import Play from 'components/play/play'
 
 Vue.use(Router)
 
@@ -20,13 +20,9 @@ export default new Router({
       path:'/channel',
       component:Channel,
     },
-    // {
-    //   path:'/focus',
-    //   component:Focus
-    // },
-    // {
-    //   path:'/search',
-    //   component:Search
-    // }
+    {
+      path:'/play',
+      component:Play
+    }
   ]
 })

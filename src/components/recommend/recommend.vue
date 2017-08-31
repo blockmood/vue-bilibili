@@ -81,7 +81,7 @@
                 })
             },
             scrollTop(){
-                this.$refs.scroll.scrollTo(0,0,1000)
+                this.$refs.scroll.scrollTo(0,0,2000)
                 this.show = false
             },
             scrollEnd(pos){

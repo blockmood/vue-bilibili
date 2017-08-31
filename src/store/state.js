@@ -4,6 +4,7 @@ const state = {
     TopTlist:[],
     focusList:[],
     history:getHistory(),
+    player:[],
     clsId:0,
     lstid:0,
     rankshow:false,

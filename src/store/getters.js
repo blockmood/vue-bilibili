@@ -13,3 +13,5 @@ export const rankshow = state => state.rankshow
 export const searchshow = state => state.searchshow
 
 export const rid = state => state.rid
+
+export const player = state => state.player

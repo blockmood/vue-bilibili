@@ -27,6 +27,9 @@ const mutations = {
     },
     [types.SET_RID](state,id){
         state.rid = id
+    },
+    [types.SET_PLAYER](state,item){
+        state.player = item
     }
 }
 

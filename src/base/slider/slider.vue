@@ -117,7 +117,7 @@
             background:rgba(0,0,0,.5)
             padding:1px 10px
             border-radius:5px
-            z-index:3;
+            z-index:10;
             .dot
               display: inline-block
               margin: 0 4px
