@@ -15,16 +15,27 @@
                         v-show="videoflag"
                         @click="toggleVideo"
                         @timeupdate="update"
+                        @ended="end"
                      >
                     </video>
                     <div class="display">
                         <div class="input-bar"></div>
                         <div class="control-bar" v-show="barshow">
-                            <div class="time-container">
+                            <div class="time-container" ref="timebox">
                                 <span class="control-text">{{getTime(currentTime)}}</span>
                                 <span class="control-split"></span>
                                 <span class="time-total">{{getTime(player.duration)}}</span>
                             </div>
+                            <div class="right">
+                                <span class="btn-comment">
+                                    <i class="icon-comment"></i>
+                                </span>
+                                <span class="control-btn">
+                                    <i class="icon-widescreen"></i>
+                                </span>
+                            </div>
+                            <!-- 进度条 -->
+                            <pross-bar :precent="precent" @precentChange="precentChange" :timeWidth="timeWidth"></pross-bar>
                         </div>
                         <div class="load-layer">   
                             <img :src="player.pic" v-show="show">
@@ -39,11 +50,11 @@
                             <div class="index_time_item" v-show="show">
                                 <p>{{getTime(player.duration)}}</p>
                             </div>
-                            <div class="index_cccTpis">
-                                <div class="index_banner" v-show="show">
+                            <div class="index_cccTpis" v-show="show">
+                                <div class="index_banner" >
                                     <p>高清更流畅，就用bilibili客户端(*^_^*)</p>
                                 </div>
-                                <div class="open_link" v-show="show">
+                                <div class="open_link">
                                     <p>用客户端打开</p>
                                 </div>
                                 <div class="index_clear"></div>
@@ -57,12 +68,15 @@
 </template>
 <script>
     import MyHeader from 'components/my-header/my-header'
+    import ProssBar from 'base/pross-bar/pross-bar'
     import {getPlayer} from 'api/player'
     import {mapGetters} from 'vuex'
     export default{
         data(){
             return {
-                date:[],
+                timeWidth:0,
+                dataList:{},
+                src:'',
                 showplay:true,
                 currentTime:0,
                 icon:false,
@@ -81,6 +95,9 @@
             }
         },
         computed:{
+            precent:function(){
+                return this.currentTime / this.player.duration
+            },
             getIcion:function(){
                 if(!this.icon){
                     return 'pause-icon'
@@ -95,14 +112,18 @@
         methods:{
             toggleClick(){
                 if(this.url){
-                    this.$refs.video.src = this.date.durl[0].url
+                    this.$refs.video.src = this.src
                     this.url = false
                 }
-                this.$refs.video.src = this.date.durl[0].url
                 this.show = false
                 this.barshow = true
                 this.icon = !this.icon
                 this.videoflag = true
+            },
+            precentChange(precent){
+                if(this.$refs.video){
+                    this.$refs.video.currentTime = this.player.duration * precent ? this.player.duration * precent : 0
+                }
             },
             toggleVideo(){
                 this.btnshow = !this.btnshow
@@ -117,11 +138,15 @@
             },
             getPlayData(){
                 getPlayer(this.player.aid).then((res)=>{
-                    this.date = res
+                    this.src = res.durl[0].url
+                    this.dataList = res
                 })
             },
             update(e){
                 this.currentTime =  e.target.currentTime
+            },
+            end(){
+                this.icon = false
             },
             getTime:function(inter){
                 inter = inter | 0
@@ -131,8 +156,10 @@
             }       
         },
         watch:{
-            player(newY){
-                this.$refs.video.src = this.date.durl[0].url
+            src(newVal){
+                this.$refs.video.src = newVal
+            },
+            player(newVal){
                 this.getPlayData()
                 this.barshow = false
                 this.show = true
@@ -147,9 +174,13 @@
                     this.$refs.video.pause()
                 }
             },
+            currentTime(){
+                this.timeWidth = this.$refs.timebox.clientWidth
+            }
         },
         components:{
-            MyHeader
+            MyHeader,
+            ProssBar
         }
     }
 </script>
@@ -203,11 +234,55 @@
                             font-size: 0;
                             text-align: left;
                             opacity: 1;
+                            .right
+                                height: 100%;
+                                float: right;
+                                font-size: 0;
+                                cursor: default;
+                                display: inline-block;
+                                .control-btn
+                                    font-size: 1rem;
+                                    display: inline-block;
+                                    height: 1.86655rem;
+                                    text-align: center;
+                                    vertical-align: top;
+                                    background-color: transparent;
+                                    color: #585858;
+                                    width: 1.664rem;
+                                    margin-left: 0.59733rem;
+                                    .icon-widescreen
+                                        list-style: none;
+                                        cursor: default;
+                                        height: 100%;
+                                        content: '';
+                                        display: block;
+                                        background: transparent url(./ui_2.png) no-repeat;
+                                        background-position:-3.30027rem -16.12416rem;
+                                        background-size: 19.968rem 60.76373rem;
+                                .btn-comment
+                                    color: #ccc;
+                                    font-size: 1rem;
+                                    display: inline-block;
+                                    height: 1.86655rem;
+                                    text-align: center;
+                                    vertical-align: top;
+                                    background-color: transparent;
+                                    color: #585858;
+                                    width: 1.664rem;
+                                    margin-left: 0.59733rem;
+                                    .icon-comment
+                                        list-style: none;
+                                        cursor: default;
+                                        height: 100%;
+                                        content: '';
+                                        display: block;
+                                        background: transparent url(./ui_2.png) no-repeat;
+                                        background-position:-4.7424rem -16.08533rem;
+                                        background-size: 19.968rem 60.76373rem;
                             .time-container
-                                position: absolute;
-                                left: 0;
+                                position:absolute;
                                 height: 1.86655rem;
-                                bottom: 0;
+                                overflow:hidden;
                                 .control-text
                                     width: 2.1332rem;
                                     text-align: right;
