@@ -1,6 +1,5 @@
 <template>  
     <div class="play_box">
-        <MyHeader></MyHeader>
         <div class="index_play">
             <div class="play_container" >
                 <div class="play_box_l">
@@ -16,7 +15,7 @@
                         @click="toggleVideo"
                         @timeupdate="update"
                         @ended="end"
-                     >
+                    >
                     </video>
                     <div class="display">
                         <div class="input-bar"></div>
@@ -39,7 +38,7 @@
                         </div>
                         <div class="load-layer">   
                             <img :src="player.pic" v-show="show">
-                             <!-- 按钮 -->
+                            <!-- 按钮 -->
                             <i  v-show="btnshow" :class="getIcion" 
                                 @click="toggleClick"
                                 ></i>
@@ -64,13 +63,60 @@
                 </div>
             </div>
         </div>
+        <div class="index_opera">
+            <div class="index_operabtn">
+                <div class="index_showfiexld">
+                    <div class="index_icon">
+                        <img src="./share.png" alt="">
+                    </div>
+                    <p>分享</p>
+                </div>
+            </div>
+            <div class="index_operabtn">
+                <div class="index_showfiexld">
+                    <div class="index_icon">
+                        <img src="./collect.png" alt="">
+                    </div>
+                    <p>收藏</p>
+                </div>
+            </div>
+            <div class="index_operabtn">
+                <div class="index_showfiexld">
+                    <div class="index_icon">
+                        <img src="./download.png" alt="">
+                    </div>
+                    <p>缓存</p>
+                </div>
+            </div>
+        </div>
+        <div class="index_videoinfo">
+            <h1 class="index_title">{{player.title}}</h1>
+            <div class="index_info">
+                <i class="index_play_icon"></i>
+                <span class="inddex_play_txt">{{player.stat.view}}</span>
+                <i class="index_dmicon"></i>
+                <span class="inddex_dm_txt">{{player.stat.danmaku}}</span>
+                <i class="index_flagbtn" :class="{'active':iconbtn}" @click="iconReges"></i>
+            </div>
+            <div class="index_descWrap" ref="pageWrap" id="pagewrap">
+                <div class="index_desc_videopage" ref="pageVideo">
+                    <span>
+                        {{player.description}}
+                    </span>
+                </div>
+            </div>
+        </div>
+        <!-- 视频相关 -->
+        <video-list :videoList="videoList"></video-list>
     </div>
 </template>
 <script>
-    import MyHeader from 'components/my-header/my-header'
     import ProssBar from 'base/pross-bar/pross-bar'
     import {getPlayer} from 'api/player'
     import {mapGetters} from 'vuex'
+    import VideoList from 'base/videolist/videolist'
+    import {VideoListData} from 'api/videoList.js'
+    
     export default{
         data(){
             return {
@@ -85,14 +131,18 @@
                 btnshow:true,
                 barshow:false,
                 index:1,
-                videoflag:false
+                videoflag:false,
+                iconbtn:false,
+                videoList:[]
             }
         },
         created(){
+            this.videoList = VideoListData.data
             this.getPlayData()
             if(this.player){
                 this.$router.push('recommend')
             }
+            console.log(this.player)
         },
         computed:{
             precent:function(){
@@ -119,6 +169,10 @@
                 this.barshow = true
                 this.icon = !this.icon
                 this.videoflag = true
+            },
+            iconReges(){
+                this.iconbtn = !this.iconbtn
+                this.heightY = '300px'
             },
             precentChange(precent){
                 if(this.$refs.video){
@@ -176,11 +230,18 @@
             },
             currentTime(){
                 this.timeWidth = this.$refs.timebox.clientWidth
+            },
+            iconbtn(flag){
+                if(flag){
+                    document.querySelector('#pagewrap').style.height = this.$refs.pageVideo.clientHeight +'px'
+                }else{
+                    document.querySelector('#pagewrap').style.height = '20' + 'px'
+                }
             }
         },
         components:{
-            MyHeader,
-            ProssBar
+            ProssBar,
+            VideoList
         }
     }
 </script>
@@ -192,6 +253,128 @@
         top:0
         bottom:0
         z-index:15
+        .llx
+            height: 100%;
+            overflow: hidden;
+        .index_videoinfo
+            padding: .832rem .512rem 0;
+            border-bottom: .02133rem solid #ccc;
+            background: #f3f3f3;
+            .index_title
+                margin: 0 0 .49067rem;
+                line-height: 1.024rem;
+                font-size: .64rem;
+                font-weight: 500;
+                color: #212121;
+            .active
+                height:200px;
+            .index_descWrap
+                height: .85333rem;
+                margin-bottom: 1.024rem;
+                overflow: hidden;
+                transition: all .5s;
+                .index_desc_videopage
+                    line-height: .85333rem;
+                    color: #757575;
+                    font-size: .512rem;
+                    word-break: break-all;
+                    span
+                        line-height: .85333rem;
+                        color: #757575;
+                        font-size: .512rem;
+                        word-break: break-all;
+            .index_info
+                position: relative;
+                margin-bottom: .46933rem;
+                color: #757575;
+                .index_play_icon
+                    display: inline-block;
+                    margin-right: .21333rem;
+                    vertical-align: middle;
+                    width: .704rem;
+                    height: .53333rem;
+                    overflow: hidden;
+                    background: url(./ui_2.png) no-repeat;
+                    background-size: 15.36rem 46.72rem;
+                    background-position: -6.37867rem -3.2rem;
+                    margin-left:0.5rem;
+                .inddex_play_txt
+                    display: inline-block;
+                    height: .53333rem;
+                    width: 3.13333rem;
+                    vertical-align: middle;
+                    line-height: .53333rem;
+                    font-size: .512rem;
+                    color: #757575;
+                    margin-left:-0.1rem;
+                    margin-top:-0.07rem;
+                .index_dmicon
+                    display: inline-block;
+                    margin-right: .21333rem;
+                    vertical-align: middle;
+                    width: .704rem;
+                    height: .53333rem;
+                    overflow: hidden;
+                    background: url(./ui_2.png) no-repeat;
+                    background-size: 15.36rem 46.72rem;
+                    background-position: -5.12rem -3.2rem;
+                .inddex_dm_txt
+                    display: inline-block;
+                    height: .53333rem;
+                    width: 2.13333rem;
+                    vertical-align: middle;
+                    line-height: .53333rem;
+                    font-size: .512rem;
+                    color: #757575;
+                    margin-left:-0.1rem;
+                    margin-top:-0.07rem;
+                .index_flagbtn
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    bottom: 0;
+                    margin: auto 0;
+                    width: .74667rem;
+                    height: .53333rem;
+                    background: url(//static.hdslb.com/mobile/img/ui_2.png) no-repeat;
+                    background-size: 15.36rem 46.72rem;
+                    background-position: -5.29067rem -6.10133rem;
+                    transition: all .1s;
+                .active
+                    background-position: -5.29067rem -7.36rem;
+        .index_opera
+            width: 100%;
+            background-color: #fff;
+            overflow:hidden;
+            border-bottom: .02133rem solid #ccc;
+            margin-top:2rem;
+            .index_operabtn
+                position: relative;
+                width: 33.33%;
+                height: 2.048rem;
+                float: left;
+                .index_showfiexld
+                    position: absolute;
+                    width: 2.73067rem;
+                    height: 50%;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%,-50%);
+                    -webkit-transform: translate(-50%,-50%);
+                    .index_icon
+                        position: relative;
+                        float: left;
+                        width: 37.5%;
+                        img
+                            display: block;
+                            width: 100%;
+                    p
+                        position: relative;
+                        float: right;
+                        line-height: 1.024rem;
+                        color: #999;
+                        font-size: .55467rem;
+                        text-align: right;
         .index_play
             position: relative;
             z-index: 100;

@@ -16,3 +16,4 @@ export function getPlayer(id){
 
     return jsonp(url,data,options)
 }
+

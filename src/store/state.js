@@ -9,7 +9,8 @@ const state = {
     lstid:0,
     rankshow:false,
     searchshow:false,
-    rid:0
+    rid:0,
+    tab:true
 }
 
 export default state

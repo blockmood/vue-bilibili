@@ -17,3 +17,5 @@ export const SET_SEARCH_SHOW = 'SET_SEARCH_SHOW'
 export const SET_RID = 'SET_RID'
 
 export const SET_PLAYER = 'SET_PLAYER'
+
+export const SET_TAB = 'SET_TAB'

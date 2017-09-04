@@ -19,13 +19,15 @@
 			backHome(){
 				this.$router.push('recommend')
 				this.setClsId(0)
+				this.settab(true)
 			},
 			search(){
 				this.setSearchShow(true)
 			},
 			...mapMutations({
                 setClsId:'SET_CLSID',
-				setSearchShow:'SET_SEARCH_SHOW'
+				setSearchShow:'SET_SEARCH_SHOW',
+				settab:'SET_TAB'
             })
 		}
 	}
@@ -35,7 +37,7 @@
 	
 .header
 	position: fixed
-	z-index: 7
+	z-index: 20
 	width:100%
 	height:1.32267rem
 	padding:.27733rem 0

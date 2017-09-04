@@ -10,7 +10,7 @@
        <transition name="searchshow">
           <Search v-show="searchshow"></Search>
        </transition>
-      <tab @showtablist="showtablist" :id="id"></tab>
+      <tab v-show="tab" @showtablist="showtablist" :id="id"></tab>
       <keep-alive>
         <router-view></router-view>
       </keep-alive>
@@ -47,7 +47,8 @@ export default {
     computed:{
       ...mapGetters([
         'rankshow',
-        'searchshow'
+        'searchshow',
+        'tab'
       ])
     },
   	components:{

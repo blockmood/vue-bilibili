@@ -91,11 +91,13 @@
             onPlay(item){
                 this.setPlayer(item)
                 this.$router.push('play')
+                this.settab(false)
             },
             ...mapMutations({
                 setRankShow:'SET_RANK_SHOW',
                 setFocusList:'SET_FOCUS_LIST',
-                setPlayer:'SET_PLAYER'
+                setPlayer:'SET_PLAYER',
+                settab:'SET_TAB'
             })
         },
         computed:{

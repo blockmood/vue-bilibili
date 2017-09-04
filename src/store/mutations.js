@@ -31,6 +31,9 @@ const mutations = {
     [types.SET_PLAYER](state,item){
         console.log(item)
         state.player = item
+    },
+    [types.SET_TAB](state,item){
+        state.tab = item
     }
 }
 
