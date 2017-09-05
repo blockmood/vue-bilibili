@@ -117,7 +117,7 @@
                         border-bottom: .08533rem solid #fb7299;
         .fix-top
             position: fixed;
-            z-index: 10;
+            z-index: 21;
             width: 100%;
             background: #fff;
             .top-area

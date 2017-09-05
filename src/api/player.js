@@ -17,3 +17,18 @@ export function getPlayer(id){
     return jsonp(url,data,options)
 }
 
+
+export function getCommint(id){
+    let url = 'https://api.bilibili.com/x/v2/reply'
+
+    const data = Object.assign({},commonParams,{
+        type:1,
+        sort:2,
+        oid:id,
+        pn:1,
+        nohot:1,
+    })
+
+    return jsonp(url,data,options)
+}
+
