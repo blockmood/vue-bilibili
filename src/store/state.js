@@ -1,10 +1,10 @@
-import {getHistory} from 'common/js/cache'
+import {getHistory,getPlayer} from 'common/js/cache'
 
 const state = {
     TopTlist:[],
     focusList:[],
     history:getHistory(),
-    player:[],
+    player:getPlayer(),
     clsId:0,
     lstid:0,
     rankshow:false,

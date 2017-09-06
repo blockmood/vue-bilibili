@@ -110,11 +110,14 @@
         <video-list :videoList="videoList"></video-list>
         <!-- 评论 -->
         <commint-list :commintList="commintList"></commint-list>
+        <!-- 底部 -->
+        <play-btn></play-btn>
     </div>
 </template>
 <script>
     import ProssBar from 'base/pross-bar/pross-bar'
     import {getPlayer,getCommint} from 'api/player'
+    import PlayBtn from 'base/playbtn/playbtn'
     import CommintList from 'base/commintlist/commintlist'
     import {mapGetters} from 'vuex'
     import VideoList from 'base/videolist/videolist'
@@ -144,10 +147,6 @@
             this.videoList = VideoListData.data
             this.getPlayData()
             this.getCommintDate()
-            if(this.player){
-                this.$router.push('recommend')
-            }
-            console.log(this.player)
         },
         computed:{
             precent:function(){
@@ -166,8 +165,7 @@
         },
         methods:{
             getCommintDate(){
-                getCommint(14141308).then((res)=>{
-                    console.log(res)
+                getCommint(this.player.aid).then((res)=>{
                     this.commintList = res.data.replies
                 })
             },
@@ -254,7 +252,8 @@
         components:{
             ProssBar,
             VideoList,
-            CommintList
+            CommintList,
+            PlayBtn
         }
     }
 </script>

@@ -6,7 +6,7 @@
                     <p class="hot-recemmend" >最新视频</p>
                 </div>
                 <div class="hot-content">
-                    <a class="hot-item" v-for="item in list">
+                    <a href="javascript:;" @click="onPlayer(item)" class="hot-item" v-for="item in list">
                         <div class="hot-src">
                             <img v-lazy="item.pic">
                             <div class="hot-btn">
@@ -39,6 +39,7 @@
 </template>
 <script>
     import {getPlay} from 'common/js/dom'
+    import {mapMutations,mapActions} from 'vuex'
     export default{
         props:{
             list:{
@@ -52,7 +53,18 @@
         methods:{
             _getPlay(state){
                 return getPlay(state)
-            }
+            },
+            onPlayer(item){
+                this.setPlayer(item)
+                this.$router.push('play')
+                this.settab(false)
+            },
+             ...mapMutations({
+                settab:'SET_TAB'
+            }),
+            ...mapActions([
+                'setPlayer'
+            ])
         }
     }
     

@@ -53,7 +53,7 @@
 <script>
 
     import {getPlay,reload} from 'common/js/dom.js'
-    import {mapGetters,mapMutations} from 'vuex'
+    import {mapGetters,mapMutations,mapActions} from 'vuex'
     import {getFocus} from 'api/focus'
     export default{
         props:{
@@ -96,9 +96,11 @@
             ...mapMutations({
                 setRankShow:'SET_RANK_SHOW',
                 setFocusList:'SET_FOCUS_LIST',
-                setPlayer:'SET_PLAYER',
                 settab:'SET_TAB'
-            })
+            }),
+            ...mapActions([
+                'setPlayer'
+            ])
         },
         computed:{
             ...mapGetters([

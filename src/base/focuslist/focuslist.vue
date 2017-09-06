@@ -2,7 +2,7 @@
     <div class="focuslist">
         <Scroll class="focus-list" :data="focusList">
             <div>
-                <a href="" class="index_item" v-for="(item,index) in focusList">
+                <a href="javascript:;" class="index_item" v-for="(item,index) in focusList">
                     <div class="index_leftMack">
                         <div :class="getStyle(index)">{{getNum(index)}}</div>
                     </div>

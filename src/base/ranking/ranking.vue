@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 <div class="hot-content">
-                    <a :href="item1.aid" class="hot-item" v-for="(item1,index) in item" v-if="index < dots.length">
+                    <a href="javascript:;" @click="onPlay(item1)" class="hot-item" v-for="(item1,index) in item" v-if="index < dots.length">
                         <div class="hot-src">
                             <img v-lazy="item1.pic">
                             <div class="hot-btn">
@@ -52,7 +52,7 @@
 
     import {NavList,iconList,TopList} from 'common/js/config'
     import {getPlay,getA} from 'common/js/dom.js'
-     import {mapMutations} from 'vuex'
+     import {mapMutations,mapActions} from 'vuex'
     export default{
         data(){
             return {
@@ -76,6 +76,11 @@
             _getPlay(state){
                return getPlay(state)
             },
+            onPlay(item){
+                this.setPlayer(item)
+                this.$router.push('play')
+                this.settab(false)
+            },
             more(index){
                index = index+1 
                for(let i=0;i<this.topList.length;i++){
@@ -90,8 +95,12 @@
             ...mapMutations({
                 setList:'SET_LIST',
                 setClsId:'SET_CLSID',
-                setTid:'SET_TID'
-            })
+                setTid:'SET_TID',
+                settab:'SET_TAB'
+            }),
+            ...mapActions([
+                'setPlayer'
+            ])
         }
     }
 </script>

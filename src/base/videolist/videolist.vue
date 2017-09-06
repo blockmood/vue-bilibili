@@ -2,7 +2,7 @@
     <div class="videolistbox">
         <h3>视频相关</h3>
         <div class="list-box">
-            <a href="" class="item" v-for="item in videoList">
+            <a href="javascript:;" @click="onPlayer(item)" class="item" v-for="(item,index) in getData()" v-if="index < dat.length">
                 <span class="img_wrap">
                     <img :src="item.pic" alt="">
                 </span>
@@ -16,10 +16,12 @@
                 </div>
             </a>
         </div>
+        <div class="index__loadMore" v-show="flag" @click="moreLoad">刚刚看到这里，点击加载更多~</div>
     </div>
 </template>
 <script>
     import {getPlay} from 'common/js/dom'
+    import {mapMutations,mapActions} from 'vuex'
     const NUM = 6
     const NEWNUM = 20
     export default{
@@ -29,9 +31,43 @@
                 default:[]
             }
         },
+        data(){
+            return {
+                dat:[],
+                msg:5,
+                flag:true
+            }
+        },
+        created(){
+            this.dat = new Array(this.msg)
+        },
         methods:{
             _getPlay(item){
                 return getPlay(item)
+            },
+            moreLoad(){
+                this.msg = 20
+            },
+            getData(){
+                return this.videoList
+            },
+            onPlayer(item){
+                this.setPlayer(item)
+                this.$router.push('play')
+                this.settab(false)
+            },
+            ...mapMutations({
+                settab:'SET_TAB'
+            }),
+            ...mapActions([
+                'setPlayer'
+            ])
+        },
+        watch:{
+            msg(newY){
+                this.flag = false
+               this.dat = new Array(this.msg)
+               this.getData()
             }
         }
     }
@@ -45,6 +81,14 @@
             margin-bottom: .42667rem;
             font-size: .64rem;
             font-weight: 400;
+        .index__loadMore
+            margin-top: .512rem;
+            width: 100%;
+            line-height: 1.728rem;
+            font-size: .55467rem;
+            color: #fb7299;
+            background-color: #e7e7e7;
+            text-align: center;
         .list-box
             padding: 0 .512rem;
             overflow:hidden;

@@ -78,7 +78,7 @@
         right:0
         top:0
         bottom:0
-        z-index:9
+        z-index:22
         background:#fff
         .focusnav
             position: fixed;

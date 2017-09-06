@@ -1,7 +1,7 @@
 <template>
     <div class="comment">
         <h3>评论</h3>
-        <div class="index_commentWrap" v-for="(list,index) in commintList" v-if="index < array.length">
+        <div class="index_commentWrap" v-if="commintList.length && index < array.length " v-for="(list,index) in commintList">
             <div class="index_commentItem">
                 <a href="" class="index_imgWrap">
                     <img class="toux" :src="list.member.avatar" alt="">
@@ -12,6 +12,9 @@
                     {{list.content.message}}
                 </p>
             </div>
+        </div>
+        <div v-if="!commintList.length" class="no_index_commentWrap">
+            <p>暂时没有品论哦~</p>
         </div>
         <span class="downLoad">下载bilibili客户端，查看全部评论</span>
     </div>
@@ -53,6 +56,12 @@
             background-color: #fb7299;
             border-radius: .128rem;
             text-align: center;
+        .no_index_commentWrap
+            p
+                text-align:center;
+                padding:1.536rem 0;
+                font-size: 0.56933rem;
+                color:#212121;
         .index_commentWrap
             padding: 0 .512rem;
             .index_commentItem
