@@ -55,6 +55,7 @@
                 this.setPlayer(item)
                 this.$router.push('play')
                 this.settab(false)
+                this.$emit('onTop')
             },
             ...mapMutations({
                 settab:'SET_TAB'

@@ -2,7 +2,7 @@
     <div class="focuslist">
         <Scroll class="focus-list" :data="focusList">
             <div>
-                <a href="javascript:;" class="index_item" v-for="(item,index) in focusList">
+                <a href="javascript:;" @click="onplayer(item)" class="index_item" v-for="(item,index) in focusList">
                     <div class="index_leftMack">
                         <div :class="getStyle(index)">{{getNum(index)}}</div>
                     </div>
@@ -40,7 +40,7 @@
     </div>
 </template>
 <script>
-    import {mapGetters} from 'vuex'
+    import {mapGetters,mapActions,mapMutations} from 'vuex'
     import Scroll from 'base/scroll/scroll'
     import {getPlay} from 'common/js/dom'
     import loading from 'base/loading/loading'
@@ -56,6 +56,11 @@
             },
             getTitle(tit){
                 return tit.slice(0,23)
+            },
+            onplayer(item){
+                this.setPlayer(item)
+                this.$router.push('play')
+                this.settab(false)
             },
             getStyle(index){
                 index = index+1
@@ -80,7 +85,13 @@
                 }else{
                     return index
                 }
-            }
+            },
+             ...mapMutations({
+                settab:'SET_TAB'
+            }),
+            ...mapActions([
+                'setPlayer'
+            ])
         },
         computed:{
             ...mapGetters([

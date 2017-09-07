@@ -9,7 +9,7 @@
                 <i class="index_mobel_pc"></i>
                 <span class="index_pc_txt">客户端</span>
             </a>
-            <a href="javascript:;" class="index_optionLink" @click="top">
+            <a href="javascript:;" class="index_optionLink" @click="onTopBtn">
                 <i class="index_top_pc"></i>
                 <span class="index_pc_txt">返回顶部</span>
             </a>
@@ -20,8 +20,8 @@
 <script>
     export default{
         methods:{
-            top(){
-                console.log(document.documentElement.scrollTop)
+            onTopBtn(){
+                this.$emit('onTop')
             }
         }
     }

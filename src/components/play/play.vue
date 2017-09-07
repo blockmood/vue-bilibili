@@ -93,25 +93,25 @@
             <h1 class="index_title">{{player.title}}</h1>
             <div class="index_info">
                 <i class="index_play_icon"></i>
-                <span class="inddex_play_txt">{{player.stat.view}}</span>
+                    <span class="inddex_play_txt" v-if="player.stat">{{player.stat.view }}</span>
                 <i class="index_dmicon"></i>
-                <span class="inddex_dm_txt">{{player.stat.danmaku}}</span>
-                <i class="index_flagbtn" :class="{'active':iconbtn}" @click="iconReges"></i>
+                <span class="inddex_dm_txt" v-if="player.stat">{{player.stat.danmaku}}</span>
+                <i class="index_flagbtn"  :class="{'active':iconbtn}" @click="iconReges"></i>
             </div>
             <div class="index_descWrap" ref="pageWrap" id="pagewrap">
                 <div class="index_desc_videopage" ref="pageVideo">
                     <span>
-                        {{player.description}}
+                        {{player.description ? player.description : player.desc}}
                     </span>
                 </div>
             </div>
         </div>
         <!-- 视频相关 -->
-        <video-list :videoList="videoList"></video-list>
+        <video-list :videoList="videoList" @onTop="onTop"></video-list>
         <!-- 评论 -->
         <commint-list :commintList="commintList"></commint-list>
         <!-- 底部 -->
-        <play-btn></play-btn>
+        <play-btn @onTop="onTop"></play-btn>
     </div>
 </template>
 <script>
@@ -168,6 +168,9 @@
                 getCommint(this.player.aid).then((res)=>{
                     this.commintList = res.data.replies
                 })
+            },
+            onTop(){
+                document.body.scrollTop = 0
             },
             toggleClick(){
                 if(this.url){
