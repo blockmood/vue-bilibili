@@ -8,7 +8,7 @@
                 <use xlink:href="#icon-sousuo"></use>
             </svg>
 		</div>
-		<a href="" class="history"></a>
+		<a href="javascript:;" class="history" @click="onSpace"></a>
 		<a href="http://d.bilibili.com/download_app.html?preUrl=http%3A%2F%2Fm.bilibili.com%2Fspace" class="donlown"><p>下载客户端</p></a>
 	</div>
 </template>
@@ -20,6 +20,10 @@
 				this.$router.push('recommend')
 				this.setClsId(0)
 				this.settab(true)
+			},
+			onSpace(){
+				this.settab(false)
+				this.$router.push('space')
 			},
 			search(){
 				this.setSearchShow(true)

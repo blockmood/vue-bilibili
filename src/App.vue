@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-      <my-header></my-header>
+      <my-header v-show="header"></my-header>
       <transition name="tablist">
           <show-tab v-show="show" @notabId="notabId" @notablist="notablist"></show-tab>
       </transition>
@@ -48,7 +48,8 @@ export default {
       ...mapGetters([
         'rankshow',
         'searchshow',
-        'tab'
+        'tab',
+        'header'
       ])
     },
   	components:{

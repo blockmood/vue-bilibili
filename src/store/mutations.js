@@ -34,6 +34,9 @@ const mutations = {
     },
     [types.SET_TAB](state,item){
         state.tab = item
+    },
+    [types.SET_HEADER](state,flag){
+        state.header = flag
     }
 }
 

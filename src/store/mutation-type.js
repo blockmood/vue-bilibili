@@ -19,3 +19,5 @@ export const SET_RID = 'SET_RID'
 export const SET_PLAYER = 'SET_PLAYER'
 
 export const SET_TAB = 'SET_TAB'
+
+export const SET_HEADER = 'SET_HEADER'

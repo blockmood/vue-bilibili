@@ -17,3 +17,5 @@ export const rid = state => state.rid
 export const player = state => state.player
 
 export const tab = state => state.tab
+
+export const header = state => state.header

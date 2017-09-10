@@ -10,7 +10,8 @@ const state = {
     rankshow:false,
     searchshow:false,
     rid:0,
-    tab:true
+    tab:true,
+    header:true
 }
 
 export default state
