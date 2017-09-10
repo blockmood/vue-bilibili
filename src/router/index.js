@@ -5,6 +5,7 @@ import Channel from 'components/channel/channel'
 import Play from 'components/play/play'
 import Space from 'components/space/space'
 import UserLogin from 'components/userlogin/userlogin'
+import UserRegister from 'components/userregister/userregister'
 
 Vue.use(Router)
 
@@ -29,9 +30,14 @@ export default new Router({
     {
       path:'/space',
       component:Space
-    },{
+    },
+    {
       path:'/login',
       component:UserLogin
+    },
+    {
+      path:'/register',
+      component:UserRegister
     }
   ]
 })

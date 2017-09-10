@@ -1,70 +1,44 @@
 <template>
-    <div class="from-app">
-        <div class="con-h5">
-            <header>
-                <a href="javascript:;" class="logo" @click="back"></a>
-                <a class="loginText">登录</a>
-            </header>
-            <div class="from">
+    <div class="register-app">
+        <header>
+            <a href="javascript:;" class="logo"  @click="back"></a>
+            <a class="loginText">注册</a>
+        </header>
+        <div class="from">
                 <ul>
                     <li class="item">
                         <div class="input-wrp">
-                            <input type="text" v-model="username" placeholder="你的手机号/邮箱" id="login-username" maxlength="50" autocomplete="off" class="error">
-                        </div>
-                        <div class="text" v-show="usernameShow">
-                            <p>请输入注册时用的邮箱或者手机号呀</p>
+                            <input type="text" name="uname" id="uname" autocomplete="off" placeholder="您的昵称, 例：哔哩哔哩">
                         </div>
                     </li>
                     <li class="item">
                         <div class="input-wrp">
-                            <input type="password" v-model="password" placeholder="密码" id="login-username" maxlength="50" autocomplete="off" class="error">
+                            <input type="password" name="userpwd" id="userpwd" autocomplete="off" placeholder="您的密码, 6-16个字符组成，区分大小写">
                         </div>
-                        <div class="text" v-show="passwordShow">
-                            <p>喵，你没输入密码么？</p>
-                            <a class="forget-password">忘记密码?</a>
+                    </li>
+                     <li class="item">
+                        <div class="input-wrp">
+                            <input type="password" name="userpwd" id="userpwd" autocomplete="off" placeholder="确认密码, 6-16个字符组成，区分大小写">
                         </div>
                     </li>
                     <li class="sns-tip"></li>
                     <li class="btn-button">
-                        <a href="javascript:;" @click="login" class="loginbtn">立即登录</a>
-                        <a href="javascript:;" @click="register">注册</a>
+                        <a href="javascript:;" class="loginbtn">立即注册</a>
+                        <router-link to='login'>登录</router-link>
                     </li>
                 </ul>
             </div>
-        </div>
     </div>
 </template>
+
 <script>
     import {mapMutations} from 'vuex'
     export default{
-        data(){
-            return {
-                usernameShow:false,
-                passwordShow:false,
-                username:1234,
-                password:1234
-            }
-        },
         methods:{
-            register(){
-                this.$router.push('register')
-            },
             back(){
                 this.$router.push('recommend')
                 this.setHeader(true)
                 this.setTab(true)
-            },
-            login(){
-                if(this.username === ''){
-                   this.usernameShow = true
-                }else{
-                    this.usernameShow = false
-                }
-                if(this.password === ''){
-                   this.passwordShow = true
-                }else{
-                    this.passwordShow = false
-                }
             },
             ...mapMutations({
                 setHeader:'SET_HEADER',
@@ -74,7 +48,7 @@
     }
 </script>
 <style scoped lang="stylus" rel="stylesheet/stylus">
-    .from-app
+    .register-app
         position: absolute;
         left:0;
         right:0;

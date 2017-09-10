@@ -4,7 +4,7 @@
             <img src="./bannerTop.png" alt="">
             <div class="index__loginField">
                 <div class="index_register">
-                    <a href="" class="register">注册</a>
+                    <a href="javascript:;" class="register" @click="register">注册</a>
                 </div>
                 <div class="index_login">
                     <a href="javascript:;" @click="login" class="login">登录</a>
@@ -38,6 +38,10 @@
         methods:{
             login(){
                 this.$router.push('login')
+                this.setHeader(false)
+            },
+            register(){
+                this.$router.push('register')
                 this.setHeader(false)
             },
             ...mapMutations({
