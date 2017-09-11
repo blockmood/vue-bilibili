@@ -1,8 +1,10 @@
-#说明
+# 说明
 
  > 项目比较简单，没什么可说明的，至于打包有兴趣的可以自行打包。
  
-#项目截图
+ > 欢迎 star
+ 
+# 项目截图
 
 ![image](https://github.com/blockmood/bilibili/blob/master/static/1.gif)
 ![image](https://github.com/blockmood/bilibili/blob/master/static/2.gif)
