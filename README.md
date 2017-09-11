@@ -1,5 +1,9 @@
 # bilibili
 
+#项目截图
+
+![image](https://github.com/blockmood/bilibili/blob/master/static/1.gif)
+
 > A Vue.js project
 
 ## Build Setup
