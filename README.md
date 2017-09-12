@@ -1,6 +1,16 @@
-# bilibili
+# 说明
 
-> A Vue.js project
+ > 项目比较简单，没什么可说明的，至于打包有兴趣的可以自行打包。
+ 
+ > 欢迎 star
+ 
+# 项目截图
+
+![image](https://github.com/blockmood/bilibili/blob/master/static/1.gif)
+![image](https://github.com/blockmood/bilibili/blob/master/static/2.gif)
+![image](https://github.com/blockmood/bilibili/blob/master/static/3.gif)
+![image](https://github.com/blockmood/bilibili/blob/master/static/4.gif)
+
 
 ## Build Setup
 
