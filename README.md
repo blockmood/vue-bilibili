@@ -1,9 +1,3 @@
-# 说明
-
- > 项目比较简单，没什么可说明的，至于打包有兴趣的可以自行打包。
- 
- > 欢迎 star
- 
 # 项目截图
 
 ![image](https://github.com/blockmood/bilibili/blob/master/static/1.gif)
@@ -11,6 +5,13 @@
 ![image](https://github.com/blockmood/bilibili/blob/master/static/3.gif)
 ![image](https://github.com/blockmood/bilibili/blob/master/static/4.gif)
 
+# 项目预览
+
+![image](https://github.com/blockmood/bilibili/blob/master/static/wecat.png)
+
+# 说明
+
+> 无聊做的，比较简单，也没什么说明的。
 
 ## Build Setup
 
