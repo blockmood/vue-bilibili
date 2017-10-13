@@ -1,13 +1,13 @@
 # 项目截图
 
 <img src="https://github.com/blockmood/bilibili/blob/master/static/1.gif" width=300 />
-![image](https://github.com/blockmood/bilibili/blob/master/static/2.gif)
-![image](https://github.com/blockmood/bilibili/blob/master/static/3.gif)
-![image](https://github.com/blockmood/bilibili/blob/master/static/4.gif)
+<img src="https://github.com/blockmood/bilibili/blob/master/static/2.gif" width=300 />
+<img src="https://github.com/blockmood/bilibili/blob/master/static/3.gif" width=300 />
+<img src="https://github.com/blockmood/bilibili/blob/master/static/4.gif" width=300 />
 
 # 项目预览
 
-![image](https://github.com/blockmood/bilibili/blob/master/static/wecat.png)
+<img src="https://github.com/blockmood/bilibili/blob/master/static/wecat.png" width=150 />
 
 # 说明
 
