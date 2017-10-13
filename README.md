@@ -1,6 +1,6 @@
 # 项目截图
 
-![image](https://github.com/blockmood/bilibili/blob/master/static/1.gif)
+![image](https://github.com/blockmood/bilibili/blob/master/static/1.gif =300)
 ![image](https://github.com/blockmood/bilibili/blob/master/static/2.gif)
 ![image](https://github.com/blockmood/bilibili/blob/master/static/3.gif)
 ![image](https://github.com/blockmood/bilibili/blob/master/static/4.gif)
