@@ -1,9 +1,9 @@
 # 项目截图
 
-![image](https://github.com/blockmood/bilibili/blob/master/static/1.gif)
-![image](https://github.com/blockmood/bilibili/blob/master/static/2.gif)
-![image](https://github.com/blockmood/bilibili/blob/master/static/3.gif)
-![image](https://github.com/blockmood/bilibili/blob/master/static/4.gif)
+![image](https://github.com/blockmood/bilibili/blob/master/static/1.gif width="300px")
+![image](https://github.com/blockmood/bilibili/blob/master/static/2.gif width="300px")
+![image](https://github.com/blockmood/bilibili/blob/master/static/3.gif width="300px")
+![image](https://github.com/blockmood/bilibili/blob/master/static/4.gif width="300px")
 
 # 项目预览
 
