@@ -4,7 +4,7 @@
 
 # 项目预览
 
-<img src="https://github.com/blockmood/bilibili/blob/master/static/wecat.png" width=150 />
+<img src="https://github.com/blockmood/vue-bilibili/blob/master/static/wecat.png" width=150 />
 
 # 说明
 
