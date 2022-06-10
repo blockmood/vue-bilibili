@@ -6,9 +6,7 @@
 
 <img src="https://github.com/blockmood/vue-bilibili/blob/master/static/wecat.png" width=150 />
 
-# 说明
 
-闲来没事做的这个，还是比较简单的，有些接口b站不支持，所以我就没做，大部分功能都实现了。
 
 # Build Setup
 
